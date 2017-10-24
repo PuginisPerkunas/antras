@@ -19,8 +19,6 @@ var  colors = ['#ddd', '#efefef', 'red',
  'aqua','cyan','deeppink',
  'blue','blueviolet','chartreuse',
  'darkmagenta','deepskyblue','gold'];
-var backgroundcolors = ['green', 'black', 'orange', 'blue', 'purple', 'pink'];
-
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -44,41 +42,32 @@ export default class App extends Component<{}> {
       color2: 'orange',
       color3: 'orange',
       color4: 'orange',
-      backgroundColor: 'rgba(0,0,0,.1)'
      }
    }
 
    _changeStyle() {
     var color = colors[Math.floor(Math.random() * colors.length)];
-    var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
     this.setState({
         color: color,
-        backgroundColor: backgroundColor
     })
     }
 
-    _changeStyle2() {
+     _changeStyle2() {
       var color = colors[Math.floor(Math.random() * colors.length)];
-      var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
       this.setState({
           color2: color,
-          backgroundColor: backgroundColor
       })
       }
       _changeStyle3() {
         var color = colors[Math.floor(Math.random() * colors.length)];
-        var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
         this.setState({
             color3: color,
-            backgroundColor: backgroundColor
         })
         }
         _changeStyle4() {
       var color = colors[Math.floor(Math.random() * colors.length)];
-      var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
       this.setState({
           color4: color,
-          backgroundColor: backgroundColor
       })
       }
 
@@ -168,7 +157,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#666666',
     justifyContent: 'space-around'//between
   },
- 
   flexBox2: {
     flex:1,
     backgroundColor:'#4286f4',
@@ -185,6 +173,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     color: 'black'
   },
-  
-  
 });
