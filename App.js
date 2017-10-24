@@ -14,6 +14,13 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+var  colors = ['#ddd', '#efefef', 'red',
+ '#666', 'rgba(0,0,0,.1)', '#ededed',
+ 'aqua','cyan','deeppink',
+ 'blue','blueviolet','chartreuse',
+ 'darkmagenta','deepskyblue','gold'];
+var backgroundcolors = ['green', 'black', 'orange', 'blue', 'purple', 'pink'];
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,33 +29,121 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+// function getRandomColor () {
+//   const index = Math.floor(Math.random() * (4))
+//   console.log('index:', index)
+//   return colors[index]
+// }
+
 export default class App extends Component<{}> {
+
+  constructor(){
+    super()
+    this.state = {
+      color: 'orange',
+      color2: 'orange',
+      color3: 'orange',
+      color4: 'orange',
+      backgroundColor: 'rgba(0,0,0,.1)'
+     }
+   }
+
+   _changeStyle() {
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
+    this.setState({
+        color: color,
+        backgroundColor: backgroundColor
+    })
+    }
+
+    _changeStyle2() {
+      var color = colors[Math.floor(Math.random() * colors.length)];
+      var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
+      this.setState({
+          color2: color,
+          backgroundColor: backgroundColor
+      })
+      }
+      _changeStyle3() {
+        var color = colors[Math.floor(Math.random() * colors.length)];
+        var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
+        this.setState({
+            color3: color,
+            backgroundColor: backgroundColor
+        })
+        }
+        _changeStyle4() {
+      var color = colors[Math.floor(Math.random() * colors.length)];
+      var backgroundColor = backgroundcolors[Math.floor(Math.random() * backgroundcolors.length)];
+      this.setState({
+          color4: color,
+          backgroundColor: backgroundColor
+      })
+      }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.flexBox1}>
         <View style={styles.containerTwo}>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => this._changeStyle()}>
             <Text style = {styles.textButton}> Button1 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this._changeStyle2()}>
             <Text style = {styles.textButton}> Button2 </Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
           </View>
           <View style={styles.containerThree}>
-          <TouchableOpacity>
-            <Text style = {styles.textButton}> Button3 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style = {styles.textButton}> Button4</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this._changeStyle3()}>
+            <Text style = {styles.textButton}> Button2 </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this._changeStyle4()}>
+            <Text style = {styles.textButton}> Button2 </Text>
+        </TouchableOpacity>
           </View>
         </View>
         <View style={styles.flexBox2}>
-            <Text style = {styles.text1}> textOne </Text>
-            <Text style = {styles.text2}> textOne1 </Text>
-            <Text style = {styles.text3}> textOne2 </Text>
-            <Text style = {styles.text4}> textOne3 </Text>
+            <Text style = {{ marginTop:10,
+    borderWidth: 6,
+    padding:5,
+    width:150,
+    textAlign: 'center',
+    fontSize: 26,
+    marginLeft: 95,
+    borderColor: 'yellow',
+    color: this.state.color }}> text1 </Text>
+             <Text style = {{ marginTop:10,
+    borderWidth: 6,
+    padding:5,
+    width:150,
+    textAlign: 'center',
+    fontSize: 26,
+    marginLeft: 95,
+    borderColor: 'yellow',
+    color: this.state.color2 }}> text2 </Text>
+            <Text style = {{ marginTop:10,
+    borderWidth: 6,
+    padding:5,
+    width:150,
+    textAlign: 'center',
+    fontSize: 26,
+    marginLeft: 95,
+    borderColor: 'yellow',
+    color: this.state.color3 }}> text3 </Text>
+            <Text style = {{ marginTop:10,
+    borderWidth: 6,
+    padding:5,
+    width:150,
+    textAlign: 'center',
+    fontSize: 26,
+    marginLeft: 95,
+    borderColor: 'yellow',
+    color: this.state.color4 }}> text4 </Text>
         </View>
       </View>
     );
@@ -79,8 +174,8 @@ const styles = StyleSheet.create({
     backgroundColor:'#4286f4',
   },
   textButton:{
-    marginTop:5,
-    borderWidth: 6,
+    marginTop:35,
+    borderWidth: 5,
     padding:5,
     width:150,
     textAlign: 'center',
@@ -90,49 +185,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     color: 'black'
   },
-  text1:{
-    marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: '#f441ee'
-  },
-  text2:{
-    marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: '#2bb1ff'
-  },
-  text3:{
-    marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: '#2aff6e'
-  },
-  text4:{
-    marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: '#2856ff'
-  }
+  
   
 });
