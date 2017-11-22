@@ -5,172 +5,113 @@
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity
-} from 'react-native';
-
-var  colors = ['#ddd', '#efefef', 'red',
- '#666', 'rgba(0,0,0,.1)', '#ededed',
- 'aqua','cyan','deeppink',
- 'blue','blueviolet','chartreuse',
- 'darkmagenta','deepskyblue','gold'];
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-// function getRandomColor () {
-//   const index = Math.floor(Math.random() * (4))
-//   console.log('index:', index)
-//   return colors[index]
-// }
+import {  Platform,  StyleSheet,  Text,  View, Button, TouchableOpacity, Alert} from 'react-native';
 
 export default class App extends Component<{}> {
 
-  constructor(){
-    super()
-    this.state = {
-      color: 'orange',
-      color2: 'orange',
-      color3: 'orange',
-      color4: 'orange',
-     }
-   }
+    constructor() {
+        super()
 
-   _changeStyle() {
-    var color = colors[Math.floor(Math.random() * colors.length)];
-    this.setState({
-        color: color,
-    })
+        this.state = {
+            backgroundColor1: "white",
+            backgroundColor2: "white",
+            backgroundColor3: "white",
+            backgroundColor4: "white"
+        };
+
     }
+    
+    render() {
+        var boxNme = ["BOX1","BOX2","BOX3","BOX4"];
 
-     _changeStyle2() {
-      var color = colors[Math.floor(Math.random() * colors.length)];
-      this.setState({
-          color2: color,
-      })
-      }
-      _changeStyle3() {
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        this.setState({
-            color3: color,
-        })
-        }
-        _changeStyle4() {
-      var color = colors[Math.floor(Math.random() * colors.length)];
-      this.setState({
-          color4: color,
-      })
-      }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.flexBox1}>
-        <View style={styles.containerTwo}>
-        <TouchableOpacity
-        onPress={() => this._changeStyle()}>
-            <Text style = {styles.textButton}> Button1 </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this._changeStyle2()}>
-            <Text style = {styles.textButton}> Button2 </Text>
-        </TouchableOpacity>
-          </View>
-          <View style={styles.containerThree}>
-        <TouchableOpacity
-          onPress={() => this._changeStyle3()}>
-            <Text style = {styles.textButton}> Button2 </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this._changeStyle4()}>
-            <Text style = {styles.textButton}> Button2 </Text>
-        </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.flexBox2}>
-            <Text style = {{ marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: this.state.color }}> text1 </Text>
-             <Text style = {{ marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: this.state.color2 }}> text2 </Text>
-            <Text style = {{ marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: this.state.color3 }}> text3 </Text>
-            <Text style = {{ marginTop:10,
-    borderWidth: 6,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 95,
-    borderColor: 'yellow',
-    color: this.state.color4 }}> text4 </Text>
-        </View>
-      </View>
-    );
-  }
+        return (
+            <View style={styles.container}>
+                <View style={styles.kairys}>
+                    <TouchableOpacity style={styles.mygtukas}
+                                      onPress={() => {this.setState({backgroundColor1: "yellow"})}}>
+                        <Text style={styles.mygtukoText}>Button1</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.mygtukas}
+                                      onPress={() => {this.setState({backgroundColor2: "orange"})}}>
+                        <Text style={styles.mygtukoText}>Button2</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.mygtukas}
+                                      onPress={() => {this.setState({backgroundColor3: "blue"})}}>
+                        <Text style={styles.mygtukoText}>Button3</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.mygtukas}
+                                      onPress={() => {this.setState({backgroundColor4: "purple"})}}>
+                        <Text style={styles.mygtukoText}>Button4</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.desinys}>
+                    <Text style={[styles.box, {backgroundColor: this.state.backgroundColor1}]}>{boxNme[0]}</Text>
+                    <Text style={[styles.box, {backgroundColor: this.state.backgroundColor2}]}>{boxNme[1]}</Text>
+                    <Text style={[styles.box, {backgroundColor: this.state.backgroundColor3}]}>{boxNme[2]}</Text>
+                    <Text style={[styles.box, {backgroundColor: this.state.backgroundColor4}]}>{boxNme[3]}</Text>
+                </View>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    flexDirection: 'column',
-  },
-  containerTwo: {
-    flex:2,
-    flexDirection: 'row',
-  },
-  containerThree: {
-    flex:2,
-    flexDirection: 'row',
-  },
-  flexBox1: {
-    flex: 1,
-    backgroundColor: '#666666',
-    justifyContent: 'space-around'//between
-  },
-  flexBox2: {
-    flex:1,
-    backgroundColor:'#4286f4',
-  },
-  textButton:{
-    marginTop:35,
-    borderWidth: 5,
-    padding:5,
-    width:150,
-    textAlign: 'center',
-    fontSize: 26,
-    marginLeft: 20,
-    borderColor: 'yellow',
-    backgroundColor: '#ffffff',
-    color: 'black'
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'red',
+        padding: 10,
+        flexDirection: 'row',
+    },
+    mygtukas:{
+      marginTop:35,
+      borderWidth: 5,
+      padding:5,
+      marginRight: 25,
+      width:150,
+      textAlign: 'center',
+      fontSize: 26,
+      marginLeft: 5,
+      borderColor: 'yellow',
+      backgroundColor: '#ffffff',
+      color: 'black'
+    },
+    left: {
+        height: '100%',
+        flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: 'red',
+        paddingTop: "15%",
+        paddingBottom: '40%',
+    },
+    right: {
+        height: '100%',
+        flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: 'yellow',
+    },
+    box: {
+        height: 80,
+        width: 120,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop:15,
+        textAlignVertical: "center"
+    },
+    button: {
+        height: 50,
+        width: 150,
+        backgroundColor: 'green',
+        alignItems: 'center',
+        borderWidth: 5,
+    },
+    buttonText: {
+        height: '100%',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textAlignVertical: 'center'
+    },
 });
